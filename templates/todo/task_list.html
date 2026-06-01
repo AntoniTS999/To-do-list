@@ -1,7 +1,7 @@
 {% extends  "base.html" %}
 {% block content %}
   <h1 class="display-3 mt-4 mb-3">TODO list
-    <a class="btn btn-primary" style="float: right" href="#">Add task</a>
+    <a class="btn btn-primary" style="float: right" href="{% url 'todo:task-create' %}">Add task</a>
   </h1>
   {% for task in task_list %}
   <h5>{{ task.content }}
@@ -19,7 +19,7 @@
     {% for tag in task.tags.all %}
       <h6>{{ tag.name }} </h6>
 
-      <h6 class="ml-1"><a href="#">Update</a></h6>
+      <h6 class="ml-1"><a href="{% url 'todo:task-update' pk=task.id %}">Update</a></h6>
       <h6 class="ml-1"><a href="#">Delete</a></h6>
       <hr>
     {% endfor %}

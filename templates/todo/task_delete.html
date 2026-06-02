@@ -1,0 +1,12 @@
+{% extends  "base.html" %}
+
+{% block content %}
+	<h5>Are you sure you want to delete the task?</h5>
+  <p style="color: red"><i>It would be deleted permanently</i></p>
+  <form action="" method="post">
+  {% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Yes, delete">
+    {% url 'todo:task-list' as task_list %}
+    <a class="btn btn-warning" href="{{ next|default:task_list }}">Cancel</a>
+  </form>
+{% endblock %}

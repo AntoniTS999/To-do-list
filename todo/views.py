@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from todo.models import Task
+from todo.models import Task, Tag
 
 
 class TaskListView(generic.ListView):
@@ -37,4 +37,7 @@ def toggle_status(request:HttpRequest, pk) -> HttpResponse:
     return redirect("todo:task-list")
 
 
+
+class TagListView(generic.ListView):
+    model = Tag
 

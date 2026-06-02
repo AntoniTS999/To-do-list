@@ -1,7 +1,9 @@
 {% extends  "base.html" %}
 
 {% block content %}
-	<h1>Tags</h1>
+	<h1>Tags
+    <a style="float: right" class="btn btn-primary" href="{% url 'todo:tag-create' %}">Add</a>
+  </h1>
   <table class="table">
   <thead>
   <tr>

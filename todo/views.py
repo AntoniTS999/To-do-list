@@ -9,11 +9,6 @@ from todo.models import Task, Tag
 class TaskListView(generic.ListView):
     model = Task
 
-    def get_context_data(self, **kwargs):
-        context = super(TaskListView, self).get_context_data(**kwargs)
-        context["next"] =self.request.META.get("HTTP_REFERER")
-        return context
-
 class TaskCreateView(generic.CreateView):
     model = Task
     fields = "__all__"
@@ -40,4 +35,10 @@ def toggle_status(request:HttpRequest, pk) -> HttpResponse:
 
 class TagListView(generic.ListView):
     model = Tag
+
+class TagCreateView(generic.CreateView):
+    model = Tag
+    fields = "__all__"
+    success_url = reverse_lazy("todo:tag-list")
+
 

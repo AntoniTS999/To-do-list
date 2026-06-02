@@ -4,7 +4,8 @@ from todo.views import (TaskListView,
                         TaskUpdateView,
                         TaskDeleteView,
                         toggle_status,
-                        TagListView)
+                        TagListView,
+                        TagCreateView)
 
 app_name="todo"
 urlpatterns = [
@@ -15,5 +16,6 @@ urlpatterns = [
     path("tasks/<int:pk>/toggle/", toggle_status, name="task-toggle"),
 
     path("tags/", TagListView.as_view(), name="tag-list"),
+    path("tags/create", TagCreateView.as_view(), name="tag-create"),
 
 ]

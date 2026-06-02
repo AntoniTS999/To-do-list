@@ -6,11 +6,17 @@
   {% for task in task_list %}
   <h5>{{ task.content }}
     {% if not task.completed %}
-      <a style="float: right" class="btn btn-success" href="#">Complete</a>
+      <form style="float: right" action="{% url 'todo:task-toggle' pk=task.id %}" method="post">
+      {% csrf_token %}
+      <button  class="btn btn-success" type="submit">Complete</button>
+      </form>
     <span style="color: red">{{ task.completed|yesno:"Done,Not done" }}</span>
   {% else %}
-      <a style="float: right" class="btn btn-secondary" href="#">Undo</a>
-  <span style="color: lightgreen">{{ task.completed|yesno:"Done,Not done" }}</span>
+      <form style="float: right" action="{% url 'todo:task-toggle' pk=task.id %}" method="post">
+      {% csrf_token %}
+      <button class="btn btn-secondary" type="submit">Undo</button>
+      </form>
+  <span style="color: #319731">{{ task.completed|yesno:"Done,Not done" }}</span>
   {% endif %}
   </h5>
     <p><small>Created: {{ task.datetime }}</small></p>

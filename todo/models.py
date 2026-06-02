@@ -12,7 +12,7 @@ class Task(models.Model):
         return f"{self.content}({self.datetime}): {self.completed}"
 
     class Meta:
-        ordering = ["-completed", "-datetime"]
+        ordering = ["completed", "-datetime"]
 
 
 class Tag(models.Model):

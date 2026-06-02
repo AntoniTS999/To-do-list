@@ -3,9 +3,13 @@
 
 {% block content %}
 	<h1>{{ object|yesno:"Update,Create" }} task</h1>
+  {% if form.errors %}
+  {% endif %}
   <form action="" method="post">
   {% csrf_token %}
   {{ form|crispy }}
     <input class="btn btn-secondary" type="Submit" value="Submit">
+      {% url 'todo:task-list' as task_list %}
+    <a class="btn btn-warning" href="{{ next|default:task_list }}">Cancel</a>
   </form>
 {% endblock %}

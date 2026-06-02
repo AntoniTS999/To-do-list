@@ -7,6 +7,6 @@
   {% csrf_token %}
     <input class="btn btn-danger" type="submit" value="Yes, delete">
     {% url 'todo:task-list' as task_list %}
-    <a href="{{ next|default:task_list }}">Cancel</a>
+    <a class="btn btn-warning" href="{{ next|default:task_list }}">Cancel</a>
   </form>
 {% endblock %}
